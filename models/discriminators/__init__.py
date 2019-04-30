@@ -1,0 +1,1 @@
+from .DCDiscriminator import mnist_discriminator

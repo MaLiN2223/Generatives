@@ -1,0 +1,1 @@
+from .DCGenerator import mnist_generator
