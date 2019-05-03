@@ -4,7 +4,7 @@ from keras import backend as K
 from keras.optimizers import Adam
 from keras.models import Model
 from keras.layers import Input
-from tqdm import tqdm
+from tqdm import tqdm_notebook as tqdm
 from utils import Timer, Logger
 import matplotlib.pyplot as plt
 
