@@ -17,7 +17,7 @@ from training import Trainer
 SIZE = 64 
 channels = 1
 img_shape = (SIZE, SIZE, channels)
-latent_dim = 100
+latent_dim = 2
 dataset = h5py.File('data.hdf5', 'r')
 data = dataset['ints'][:]
 #data = data.reshape(-1, img_shape[0], img_shape[1], img_shape[2])

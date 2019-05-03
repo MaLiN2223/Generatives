@@ -5,8 +5,7 @@ from utils.Logger import Logger
 logger = Logger.get_logger()
 
 
-def mnist_generator(latent_dim, channels):
-    depth = 16
+def mnist_generator(latent_dim, channels, depth = 16): 
     model = Sequential()
 
     model.add(Dense(128 * depth * depth, activation="relu", input_dim=latent_dim))

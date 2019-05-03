@@ -4,7 +4,7 @@ from keras import backend as K
 from keras.optimizers import Adam
 from keras.models import Model
 from keras.layers import Input
-
+from tqdm import tqdm
 from utils import Timer, Logger
 import matplotlib.pyplot as plt
 
@@ -18,7 +18,7 @@ class Trainer:
     def __init__(self, data, generator, discriminator, latent_dim, img_shape):
         # Input shape
         self.img_shape = img_shape
-        self.latent_dim = latent_dim
+        self.latent_dim = latent_dim 
         self.data = data
         optimizer = Adam(0.0002, 0.5)
 
@@ -56,7 +56,7 @@ class Trainer:
         timer = Timer()
         time_sum = 0
         print('Training starts')
-        for epoch in range(epochs):
+        for epoch in tqdm(range(epochs)):
             timer.reset()
             # Select a random half of images
             idx = np.random.randint(0, X_train.shape[0], batch_size)
@@ -88,10 +88,9 @@ class Trainer:
                 time_sum = 0
 
     def save_imgs(self, epoch):
-        r, c = 5, 5
+        r, c = 2, 2
         noise = np.random.normal(0, 1, (r * c, self.latent_dim))
         gen_imgs = self.generator.predict(noise)
-
         # Rescale images 0 - 1
         gen_imgs = 0.5 * gen_imgs + 0.5
 
