@@ -46,7 +46,7 @@ class Trainer:
                 self.combined = Model(z, valid)
                 self.combined.compile(loss='binary_crossentropy', optimizer=optimizer)
 
-    def train(self, epochs, batch_size=128, save_interval=50):
+    def train(self, epochs, batch_size=128, save_interval=50, interval_function=None):
         X_train = self.data
 
         # Adversarial ground truths
@@ -83,23 +83,7 @@ class Trainer:
             stat_logger.info("%d [%f %.2f%%] [%f] [%f]" % (epoch, d_loss[0], 100 * d_loss[1], g_loss, time))
             # If at save interval => save generated image samples
             if epoch % save_interval == 0:
-                self.save_imgs(epoch)
+                if interval_function is not None:
+                    interval_function(self, epoch)
                 stat_logger.info('%.2f' % (time_sum))
-                time_sum = 0
-
-    def save_imgs(self, epoch):
-        r, c = 2, 2
-        noise = np.random.normal(0, 1, (r * c, self.latent_dim))
-        gen_imgs = self.generator.predict(noise)
-        # Rescale images 0 - 1
-        gen_imgs = 0.5 * gen_imgs + 0.5
-
-        fig, axs = plt.subplots(r, c)
-        cnt = 0
-        for i in range(r):
-            for j in range(c):
-                axs[i, j].imshow(gen_imgs[cnt, :,:,0], cmap='gray')
-                axs[i, j].axis('off')
-                cnt += 1
-        fig.savefig("outputs/output_%d.png" % epoch)
-        plt.close()
+                time_sum = 0 
