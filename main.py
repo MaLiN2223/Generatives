@@ -8,8 +8,8 @@ set_random_seed(0)
 import h5py
 from training.DataProvider import DataProviderFactory
 from keras.optimizers import Adam
-from models.generators import vgg_generator
-from models.discriminators import vgg_discriminator
+from models.generators import vgg_generator, test_generator
+from models.discriminators import vgg_discriminator, test_discriminator
 from training import Trainer
 from utils.Utils import save_imgs, prepare_directories
 prepare_directories()
@@ -23,8 +23,8 @@ channels = 3
 img_shape = (SIZE, SIZE, channels)
 latent_dim = 256
 
-generator = vgg_generator(latent_dim, channels)
-disc = vgg_discriminator(img_shape)
+generator = test_generator(latent_dim, channels)
+disc = test_discriminator(img_shape)
 
 data_provider = DataProviderFactory.get_generator('cifar')
 

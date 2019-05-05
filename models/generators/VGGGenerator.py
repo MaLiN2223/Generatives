@@ -5,7 +5,7 @@ from utils.Logger import Logger
 logger = Logger.get_logger()
 
 
-def vgg_generator(latent_dim, channels): 
+def vgg_generator(latent_dim, channels):
     model = Sequential()
     depth = 8
     model.add(Dense(128 * depth * depth, activation="relu", input_dim=latent_dim))

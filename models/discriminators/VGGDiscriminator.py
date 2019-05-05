@@ -6,7 +6,7 @@ from keras.applications.vgg19 import VGG19
 from utils.Logger import Logger
 logger = Logger.get_logger()
 
-def vgg_discriminator(img_shape, train_vgg = False): 
+def vgg_discriminator(img_shape, train_vgg = False):
     model = VGG19(weights='imagenet',include_top=False,input_shape=img_shape)
     top_model = Sequential()
     top_model.add(BatchNormalization(momentum=0.8))

@@ -16,6 +16,8 @@ class CifarDataProvider:
     def download_dataset(self):
         from keras.datasets import cifar10
         (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+        x_train = x_train[y_train.flatten() == 3]
+        x_test = x_test[y_test.flatten() == 3]
         self.dataset = np.concatenate((x_train, x_test))
 
 
