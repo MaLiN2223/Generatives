@@ -1,6 +1,23 @@
 import os
-class DataProvider:
-    pass
+import numpy as np
+
+class DataProviderFactory:
+    @staticmethod
+    def get_generator(name):
+        if name == 'cifar':
+            return CifarDataProvider()
+
+
+class CifarDataProvider:
+    def __init__(self):
+        self.dataset = None
+        self.img_shape = (32,32,3)
+
+    def download_dataset(self):
+        from keras.datasets import cifar10
+        (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+        self.dataset = np.concatenate((x_train, x_test))
+
 
 
 class FolderDataProvider:

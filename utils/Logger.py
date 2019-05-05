@@ -4,6 +4,7 @@ import logging.config
 import logging.handlers
 
 
+
 class Logger:
     logger = None
     statistics_logger = None
