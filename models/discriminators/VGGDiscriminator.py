@@ -2,7 +2,7 @@ from keras.models import Sequential, Model
 from keras.layers import Dense, Input,  BatchNormalization, Conv2D,Flatten, LeakyReLU, Dropout
 
 from keras.layers import ZeroPadding2D
-from keras.applications.vgg16 import VGG16
+from keras.applications.vgg19 import VGG19
 from utils.Logger import Logger
 logger = Logger.get_logger()
 
