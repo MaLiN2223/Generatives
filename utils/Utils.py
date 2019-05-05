@@ -24,11 +24,7 @@ def save_imgs(self, epoch, latent_dim=None, notebook_mode = True):
     plt.close()
     img = Image.fromarray(gen_imgs[0,:,:,0]*255).convert("L")
     single = f"outputs_single/image_{str(epoch).zfill(5)}.png"
-    img.save(single)
-    print('sadsads')
-    if notebook_mode and epoch % 500 == 0:
-      from .GoogleNotebookUtils import upload_to_gdrive
-      upload_to_gdrive()
+    img.save(single) 
 
 
 def prepare_directories():
