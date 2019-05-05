@@ -36,4 +36,4 @@ configuration = {
     'data_provider':  data_provider
 }
 trainer = Trainer.from_configuration(configuration)
-trainer.train(epochs=100001, batch_size=64, save_interval=25, interval_function=save_imgs, notebook_mode = True)
+trainer.train(epochs=100001, batch_size=128, save_interval=5, interval_function=save_imgs, notebook_mode = False)
