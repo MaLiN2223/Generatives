@@ -3,6 +3,7 @@ from keras.layers import Dense, Input,  BatchNormalization, Conv2D,Flatten, Leak
 
 from keras.layers import ZeroPadding2D
 from keras.applications.vgg16 import VGG16
+from utils.Logger import Logger
 logger = Logger.get_logger()
 
 def discriminator(img_shape, train_vgg = False):
