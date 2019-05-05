@@ -8,7 +8,7 @@ logger = Logger.get_logger()
 
 def discriminator(img_shape, train_vgg = False):
     #model = VGG19(weights="imagenet",include_top=False,input_shape=(128,128,3))
-    model = VGG19(weights=None,include_top=False,input_shape=(128,128,3))
+    model = VGG19(weights=None,include_top=False,input_shape=img_shape)
     model.layers[-1].outbound_nodes = []
     model.outputs = [model.layers[-1].output]
     x = model.layers[-1].output
