@@ -70,7 +70,7 @@ class Trainer:
         for epoch in tqdm(range(epochs)):
             timer.reset()
             # Select random images
-            idx = np.mod(np.random.randint(0, X_train.shape[0], batch_size),1000)
+            idx = np.random.randint(0, X_train.shape[0], batch_size)
             imgs = X_train[idx].reshape(-1,  self.img_shape[0],  self.img_shape[1],  self.img_shape[2])
             imgs = imgs.astype(np.float32) / 255.0 # scale 0 to 1
 
